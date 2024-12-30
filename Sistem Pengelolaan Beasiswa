@@ -1,0 +1,31 @@
+class PenerimaBeasiswa:
+    def _init_(self, nama, nim, jurusan, jenis_beasiswa):
+        self.nama = nama
+        self.nim = nim
+        self.jurusan = jurusan
+        self.jenis_beasiswa = jenis_beasiswa
+
+class SistemBeasiswa:
+    def _init_(self):
+        self.daftar_penerima = []
+
+    def tambah_penerima(self, penerima):
+        self.daftar_penerima.append(penerima)
+
+    def tampilkan_penerima(self):
+        for penerima in self.daftar_penerima:
+            print(f'Nama: {penerima.nama}, NIM: {penerima.nim}, Jurusan: {penerima.jurusan}, Jenis Beasiswa: {penerima.jenis_beasiswa}')
+
+    def hapus_penerima(self, nim):
+        self.daftar_penerima = [penerima for penerima in self.daftar_penerima if penerima.nim != nim]
+
+# Contoh penggunaan
+sistem_beasiswa = SistemBeasiswa()
+penerima1 = PenerimaBeasiswa('Budi', '12345', 'Informatika', 'Beasiswa Prestasi')
+penerima2 = PenerimaBeasiswa('Siti', '67890', 'Sistem Informasi', 'Beasiswa Bidikmisi')
+
+sistem_beasiswa.tambah_penerima(penerima1)
+sistem_beasiswa.tambah_penerima(penerima2)
+sistem_beasiswa.tampilkan_penerima()
+sistem_beasiswa.hapus_penerima('12345')
+sistem_beasiswa.tampilkan_penerima()
